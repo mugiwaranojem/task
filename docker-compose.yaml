@@ -6,6 +6,7 @@ services:
     container_name: "${APP_NAME}_web"
     ports:
       - "9000:9000"
+      - "5173:5173" # Ensure Vite is exposed
     volumes:
       - ./:/var/www
     networks:
