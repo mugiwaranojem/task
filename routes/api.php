@@ -28,3 +28,4 @@ Route::post('/tasks', [TaskController::class, 'postTask'])->name('task.create');
 Route::get('/tasks/{id}', [TaskController::class, 'showTask'])->name('task.show');
 Route::get('/projects/{projectId}/tasks', [TaskController::class, 'allProjectTasks'])->name('task.list');
 Route::delete('/tasks/{id}', [TaskController::class, 'deleteTask'])->name('task.delete');
+Route::post('/tasks/update-order', [TaskController::class, 'updateOrder'])->name('task.order');

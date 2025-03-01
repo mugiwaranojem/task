@@ -81,4 +81,10 @@ class TaskController extends Controller
             'message' => 'Task deleted successfully!'
         ], 200);
     }
+
+    public function updateOrder(Request $request)
+    {
+        $this->taskService->updateOrder($request->tasks);
+        return response()->json(['message' => 'Task priority updated successfully']);
+    }
 }

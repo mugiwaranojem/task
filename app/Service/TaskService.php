@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Models\Task;
+use SebastianBergmann\Type\VoidType;
 
 class TaskService
 {
@@ -18,7 +19,7 @@ class TaskService
 
     public function allProjectTasks(int $project_id)
     {
-        $tasks = Task::where('project_id', $project_id)->orderBy('title', 'asc')->paginate(10);
+        $tasks = Task::where('project_id', $project_id)->orderBy('priority', 'asc')->paginate(10);
         return $tasks;
     }
 
@@ -38,5 +39,12 @@ class TaskService
     {
         $task = Task::find($id);
         $task->delete();
+    }
+
+    public function updateOrder(array $tasks): void
+    {
+        foreach ($tasks as $taskData) {
+            Task::where('id', $taskData['id'])->update(['priority' => $taskData['priority']]);
+        }
     }
 }
