@@ -1,6 +1,25 @@
 # Task App
 Task App
 
+# Live Installation
+1. Extract task.zip to web server
+2. Import task_db.sql to database
+3. Update db credential in .env file
+```
+APP_URL=YOUR_APP_URL
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=YOUR_DATABSE_NAME
+DB_USERNAME=YOUR_DATABSE_USERNAME
+DB_PASSWORD=YOUR_DATABSE_PASSWORD
+```
+
+# Live example
+Visit this url for live demonstration of the app  
+https://test.anf-gem.com/#/
+
+
+# Local Installation
 ## Prerequisite
 - Docker 2.4 (or latest)
 - Docker Compose 1.27.4 (or latest, usually included in docker insall setup)
