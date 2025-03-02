@@ -1,12 +1,12 @@
 <script setup>
-import { ref, onMounted } from "vue";
-import axios from "axios";
-import { useRouter, useRoute } from "vue-router";
-import TaskService from "@/services/TaskService";
-import ProjectService from "@/services/ProjectService";
-import { format } from "date-fns";
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+import { useRouter, useRoute } from 'vue-router';
+import TaskService from '@/services/TaskService';
+import ProjectService from '@/services/ProjectService';
+import { format } from 'date-fns';
 import Datepicker from '@vuepic/vue-datepicker';
-import '@vuepic/vue-datepicker/dist/main.css'
+import '@vuepic/vue-datepicker/dist/main.css';
 
 const props = defineProps({
   taskId: { type: [Number, null], default: null },
@@ -29,7 +29,7 @@ const task = ref({
   deadline: null,
 });
 const message = ref(null);
-const project = ref({id: null, title: ''});
+const project = ref({ id: null, title: '' });
 const selectedDate = ref(null);
 const loading = ref(false);
 const projectId = ref(null);
@@ -48,16 +48,17 @@ const submitTask = async () => {
     } else {
       await TaskService.updateTask(props.taskId, task.value);
     }
-    
-    message.value = action.value === 'add'
-      ? 'Task created successfully!'
-      : 'Task updated successfully!';
+
+    message.value =
+      action.value === 'add'
+        ? 'Task created successfully!'
+        : 'Task updated successfully!';
     loading.value = false;
     window.scrollTo({
       top: 0,
-      behavior: "smooth", // Enables slow scrolling
+      behavior: 'smooth', // Enables slow scrolling
     });
-    
+
     // Redirect to task list after successful submission
     setTimeout(() => {
       router.push('/');
@@ -70,7 +71,7 @@ const submitTask = async () => {
 };
 
 const formatDate = (date) => {
-  return date ? format(date, "yyyy-MM-dd HH:mm:ss") : '';
+  return date ? format(date, 'yyyy-MM-dd HH:mm:ss') : '';
 };
 
 // Fetch Project Details
@@ -79,7 +80,7 @@ const loadProject = async () => {
     const response = await ProjectService.getProject(route.params.projectId);
     project.value = response.data?.data;
   } catch (error) {
-    console.error("Error fetching project:", error);
+    console.error('Error fetching project:', error);
   }
 };
 
@@ -91,7 +92,7 @@ const loadTask = async () => {
     selectedDate.value = task.value.deadline;
     project.value = task.value.project;
   } catch (error) {
-    console.error("Error fetching task:", error);
+    console.error('Error fetching task:', error);
   }
 };
 
@@ -105,19 +106,26 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="container mt-4" style="max-width: 600px;">
+  <div class="container mt-4" style="max-width: 600px">
     <h2 class="mb-3">
       <span v-if="action === 'add'">Add New Task</span>
       <span v-else>Edit Task</span>
     </h2>
 
-    <div id="alert-message" v-if="message" class="alert alert-info">{{ message }}</div>
+    <div id="alert-message" v-if="message" class="alert alert-info">
+      {{ message }}
+    </div>
 
     <form @submit.prevent="submitTask">
       <!-- Project ID -->
       <div class="mb-3">
         <label class="form-label">Project</label>
-        <input type="text" :value="project.title" class="form-control" disabled />
+        <input
+          type="text"
+          :value="project.title"
+          class="form-control"
+          disabled
+        />
       </div>
 
       <!-- Title -->
@@ -149,8 +157,11 @@ onMounted(async () => {
       </div>
 
       <button type="submit" class="btn btn-primary" :disabled="loading">
-        <span v-if="loading" class="spinner-border spinner-border-sm me-2"></span>
-        {{ loading ? "Submitting..." : "Save" }}
+        <span
+          v-if="loading"
+          class="spinner-border spinner-border-sm me-2"
+        ></span>
+        {{ loading ? 'Submitting...' : 'Save' }}
       </button>
       <router-link to="/" class="btn btn-secondary ms-2">
         <i class="bi bi-arrow-left"></i> Back

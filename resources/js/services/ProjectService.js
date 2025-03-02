@@ -16,7 +16,7 @@ export default {
    * @param {number} projectId
    * @returns {Promise}
    */
-   getProject(projectId) {
+  getProject(projectId) {
     return axios.get(`${API_URL}/${projectId}`);
   },
 };

@@ -1,22 +1,22 @@
-import { createRouter, createWebHashHistory } from "vue-router";
-import TaskList from "@/views/TaskList.vue";
-import EditTask from "@/views/EditTask.vue";
-import AddTask from "@/views/AddTask.vue";
+import { createRouter, createWebHashHistory } from 'vue-router';
+import TaskList from '@/views/TaskList.vue';
+import EditTask from '@/views/EditTask.vue';
+import AddTask from '@/views/AddTask.vue';
 
 const routes = [
   {
-    name: "AddTask",
-    path: "/project/:projectId/add-task",
-    component: AddTask
+    name: 'AddTask',
+    path: '/project/:projectId/add-task',
+    component: AddTask,
   },
   {
-    path: "/",
-    name: "TaskList",
+    path: '/',
+    name: 'TaskList',
     component: TaskList,
   },
   {
-    path: "/tasks/:id/edit",
-    name: "EditTask",
+    path: '/tasks/:id/edit',
+    name: 'EditTask',
     component: EditTask,
     props: true,
   },

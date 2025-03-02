@@ -50,8 +50,8 @@ export default {
   },
 
   /**
-   * 
-   * @param {array} tasks 
+   *
+   * @param {array} tasks
    * @returns {Promise}
    */
   updateTaskOrder(tasks) {

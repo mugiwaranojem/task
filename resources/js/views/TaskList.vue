@@ -40,25 +40,27 @@ const loadTasks = async () => {
 
 async function updateTaskOrder() {
   try {
-    await TaskService.updateTaskOrder(tasks.value.map((task, index) => ({
-      id: task.id,
-      priority: index + 1, // Assigning new priority based on the order
-    })));
-    console.log("Task order updated successfully");
+    await TaskService.updateTaskOrder(
+      tasks.value.map((task, index) => ({
+        id: task.id,
+        priority: index + 1, // Assigning new priority based on the order
+      }))
+    );
+    console.log('Task order updated successfully');
   } catch (error) {
     console.error('Error updating task order:', error);
   }
 }
 
 const deleteTask = async (taskId) => {
-  const isConfirmed = confirm("Are you sure you want to delete this task?");
+  const isConfirmed = confirm('Are you sure you want to delete this task?');
   if (!isConfirmed) return;
 
   loadingTaskId.value = taskId;
   deleting.value = true;
   try {
     await TaskService.deleteTask(taskId);
-    tasks.value = tasks.value.filter(task => task.id !== taskId);
+    tasks.value = tasks.value.filter((task) => task.id !== taskId);
     deleting.value = false;
   } catch (error) {
     deleting.value = false;
@@ -91,9 +93,15 @@ const editTask = (taskId) => {
       </p>
     </div>
 
-    <div v-if="!loadingTasks && selectedProjectId" class="d-flex justify-content-between align-items-center my-3">
+    <div
+      v-if="!loadingTasks && selectedProjectId"
+      class="d-flex justify-content-between align-items-center my-3"
+    >
       <h5>Task List</h5>
-      <router-link :to="`/project/${selectedProjectId}/add-task`" class="btn btn-primary btn-sm">
+      <router-link
+        :to="`/project/${selectedProjectId}/add-task`"
+        class="btn btn-primary btn-sm"
+      >
         <i class="bi bi-plus"></i> Add Task
       </router-link>
     </div>
@@ -108,15 +116,25 @@ const editTask = (taskId) => {
         class="list-group"
         :animation="200"
       >
-      <!-- Draggable Task List -->
+        <!-- Draggable Task List -->
         <template v-slot:item="{ element }">
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            <span>{{ element.title }}</span><br />
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            <span>{{ element.title }}</span
+            ><br />
             <div>
-              <router-link :to="`/tasks/${element.id}/edit`" class="btn btn-warning btn-sm me-2">
+              <router-link
+                :to="`/tasks/${element.id}/edit`"
+                class="btn btn-warning btn-sm me-2"
+              >
                 <i class="bi bi-pencil"></i>
               </router-link>
-              <button @click="deleteTask(element.id)" class="btn btn-danger btn-sm" :disabled="deleting">
+              <button
+                @click="deleteTask(element.id)"
+                class="btn btn-danger btn-sm"
+                :disabled="deleting"
+              >
                 <i v-if="loadingTaskId !== element.id" class="bi bi-trash"></i>
                 <span v-else class="spinner-border spinner-border-sm"></span>
               </button>

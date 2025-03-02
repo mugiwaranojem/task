@@ -1,5 +1,5 @@
 <script setup>
-import TaskForm from "@/views/TaskForm.vue";
+import TaskForm from '@/views/TaskForm.vue';
 </script>
 
 <template>
