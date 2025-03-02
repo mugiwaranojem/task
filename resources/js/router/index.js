@@ -1,8 +1,14 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import TaskList from "@/views/TaskList.vue";
 import EditTask from "@/views/EditTask.vue";
+import AddTask from "@/views/AddTask.vue";
 
 const routes = [
+  {
+    name: "AddTask",
+    path: "/project/:projectId/add-task",
+    component: AddTask
+  },
   {
     path: "/",
     name: "TaskList",
@@ -17,7 +23,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
 });
 

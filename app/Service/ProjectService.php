@@ -12,6 +12,11 @@ class ProjectService
         return $project;
     }
 
+    public function showProject(int $id): Project
+    {
+        return Project::find($id);
+    }
+
     public function allProjects()
     {
         $projects = Project::orderBy('title', 'asc')->paginate(10);

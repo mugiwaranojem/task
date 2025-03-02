@@ -1,15 +1,17 @@
 <template>
-  <h1>Welcome Project Tasks</h1>
-  <RouterView />
+  <div class="layout-container">
+    <RouterView />
+  </div>
 </template>
 
 <script setup>
-import ProjectTaskList from '@/components/ProjectTaskList.vue';
 import { RouterView } from "vue-router";
 </script>
 
 <style scoped>
-h1 {
-  color: blue;
+.layout-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
 </style>

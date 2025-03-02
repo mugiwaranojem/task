@@ -37,6 +37,12 @@ class ProjectController extends Controller
         return new ProjectResource($project);
     }
 
+    public function showProject(int $id)
+    {
+        $project = $this->projectService->showProject($id);
+        return new ProjectResource($project);
+    }
+
     public function allProjects(Request $request)
     {
         $projects = $this->projectService->allProjects();

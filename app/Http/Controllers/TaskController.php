@@ -52,7 +52,7 @@ class TaskController extends Controller
     }
 
     // Update the task
-    public function update(Request $request, int $id)
+    public function updateTask(Request $request, int $id)
     {
         $params = $request->all();
         $validator = Validator::make($params, [

@@ -12,8 +12,10 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
+        "@vuepic/vue-datepicker": "^11.0.1",
         "bootstrap": "^5.3.3",
         "bootstrap-icons": "^1.11.3",
+        "date-fns": "^4.1.0",
         "vue": "^3.5.13",
         "vue-router": "^4.5.0",
         "vuedraggable": "^4.1.0"
